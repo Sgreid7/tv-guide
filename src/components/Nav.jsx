@@ -22,7 +22,10 @@ export default Nav
 const NavBar = styled.nav`
   display: flex;
   justify-content: center;
-  background: rgba(245, 245, 245, 0.8);
+  background: #111;
+  border-bottom: 0.2rem solid rgb(255, 250, 205);
+  transition: 0.3s ease;
+
   ul {
     display: flex;
     justify-content: space-around;
@@ -40,8 +43,13 @@ const NavBar = styled.nav`
 
   a {
     text-decoration: none;
-    color: #000;
+    color: rgba(245, 245, 245);
+    text-shadow: 0.1rem 0.1rem 0.1rem solid rgb(255, 250, 205);
     padding: 1rem;
     font-size: 1.5rem;
+    :hover {
+      text-shadow: 0.5rem 0.5rem 0.5rem solid rgba(245, 245, 245);
+      color: rgb(255, 250, 205);
+    }
   }
 `

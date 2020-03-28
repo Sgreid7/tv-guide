@@ -36,40 +36,45 @@ const ShowDetail = (props) => {
 
   return (
     <>
-      <ShowSection backdrop={`${BACKDROP_PATH}${show.backdrop_path}`}>
-        <ShowInfo>
-          <Overdrive id={`${show.id}`}>
-            <TVPoster
-              src={`${POSTER_PATH}${show.poster_path}`}
-              alt={show.name}
-            />
-          </Overdrive>
-          <div>
-            <h1>{show.name}</h1>
-            <p>First Aired:</p>
-            <h3>{moment(show.first_air_date).format('MMM Do YY')}</h3>;
-            <p>{show.overview}</p>
-          </div>
-        </ShowInfo>
-      </ShowSection>
-      <Header>Cast</Header>
-      <ActorSection>
-        {actors.map((actor) => {
-          return (
-            <Actor
-              key={actor.id}
-              id={actor.id}
-              name={actor.name}
-              character={actor.character}
-            />
-          )
-        })}
-      </ActorSection>
+      <Main>
+        <ShowSection backdrop={`${BACKDROP_PATH}${show.backdrop_path}`}>
+          <ShowInfo>
+            <Overdrive id={`${show.id}`}>
+              <TVPoster
+                src={`${POSTER_PATH}${show.poster_path}`}
+                alt={show.name}
+              />
+            </Overdrive>
+            <div>
+              <h1>{show.name}</h1>
+              <p>First Aired:</p>
+              <h3>{moment(show.first_air_date).format('MMM Do YY')}</h3>
+              <p>{show.overview}</p>
+            </div>
+          </ShowInfo>
+        </ShowSection>
+        <Header>Cast</Header>
+        <ActorSection>
+          {actors.map((actor) => {
+            return (
+              <Actor
+                key={actor.id}
+                id={actor.id}
+                name={actor.name}
+                character={actor.character}
+              />
+            )
+          })}
+        </ActorSection>
+      </Main>
     </>
   )
 }
 
 export default ShowDetail
+const Main = styled.main`
+  background: #111;
+`
 
 const ShowSection = styled.section`
   position: relative;
@@ -78,13 +83,27 @@ const ShowSection = styled.section`
   background-size: cover;
 `
 const ShowInfo = styled.section`
-  background: #fff;
+  background: #111;
+  color: whitesmoke;
+  text-shadow: 0.05rem 0.05rem 0.05rem rgb(255, 250, 205);
   text-align: center;
   padding: 2rem 10%;
   display: flex;
 
   div {
     margin-left: 1.2rem;
+    line-height: 1.5rem;
+    > h1 {
+      font-size: 2.2rem;
+      margin-top: 0;
+      font-style: italic;
+    }
+    > p {
+      font-size: 1.2rem;
+    }
+    > h3 {
+      font-size: 1.5rem;
+    }
   }
   img {
     position: relative;
@@ -92,14 +111,24 @@ const ShowInfo = styled.section`
   }
 `
 const Header = styled.h3`
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  font-size: 2rem;
+  color: whitesmoke;
+  text-shadow: 0.05rem 0.05rem 0.05rem rgb(255, 250, 205);
+  margin: 0 auto;
+  border-bottom: 0.15rem solid rgb(255, 250, 205);
 `
 
 const ActorSection = styled.section`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 1rem;
   text-align: center;
+  color: whitesmoke;
+  text-shadow: 0.05rem 0.05rem 0.05rem rgb(255, 250, 205);
 
   li {
     list-style: none;
@@ -107,6 +136,6 @@ const ActorSection = styled.section`
 
   a {
     text-decoration: none;
-    color: #000;
+    color: whitesmoke;
   }
 `
