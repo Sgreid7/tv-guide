@@ -86,6 +86,12 @@ const RandomShow = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* background: rgb(255, 250, 205); */
+
+  h2 {
+    color: whitesmoke;
+    text-shadow: 1rem solid red;
+  }
 `
 const TVShowGrid = styled.section`
   display: grid;
@@ -97,7 +103,6 @@ const TVShowGrid = styled.section`
 const Header = styled.header`
   text-align: center;
   margin: 1rem;
-  /* position: absolute; */
   h1 {
     color: rgba(245, 245, 245);
     text-shadow: 0.05rem 0.05rem 0.05rem rgb(255, 250, 205);
