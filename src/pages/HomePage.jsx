@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import TVShow from '../components/TVShow'
+import devices from '../utils/devices'
 
 const HomePage = (props) => {
   // create a hook for the tv shows
@@ -95,34 +96,71 @@ const RandomShow = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 7rem 7rem 2rem 7rem;
-  padding: 2rem 0;
+  /* margin: 7rem 7rem 2rem 7rem; */
+  margin: 12vh 2rem 5vh 2rem;
+  padding: 0 0 2rem 0;
   box-shadow: 0 0 1.3rem rgb(255, 250, 205);
   border-radius: 0.5rem;
 
   h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-style: italic;
     color: whitesmoke;
-    text-shadow: 1rem solid red;
+    text-align: center;
+    -webkit-text-fill-color: rgb(
+      255,
+      250,
+      205
+    ); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
   }
 
   img {
     box-shadow: 0 0 1.3rem rgb(255, 250, 205);
   }
+
+  @media (${devices.tablet}) {
+    h2 {
+      font-size: 2rem;
+    }
+  }
 `
 const TVShowGrid = styled.section`
   display: grid;
-  padding: 5rem 1.5rem 1.5rem 1.5rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   grid-row-gap: 1.5rem;
   text-align: center;
+
+  @media (${devices.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (${devices.laptop}) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 2rem;
+  }
+
+  @media (${devices.laptopL}) {
+    padding: 5rem 1.5rem 1.5rem 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
 `
 const Header = styled.header`
   text-align: center;
   margin: 1rem;
+
   h1 {
-    color: rgba(245, 245, 245);
-    text-shadow: 0.05rem 0.05rem 0.05rem rgb(255, 250, 205);
+    font-size: 2rem;
     padding: 1rem 0 0 0;
+    -webkit-text-fill-color: rgb(
+      255,
+      250,
+      205
+    ); /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #000;
   }
 
   .search-box {
@@ -169,8 +207,15 @@ const Header = styled.header`
     outline: none;
     float: left;
     padding: 0;
-    color: #fff;
+    color: #000;
     transition: 0.4s ease;
     width: 0rem;
+  }
+
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
   }
 `
