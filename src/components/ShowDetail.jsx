@@ -25,7 +25,7 @@ const ShowDetail = (props) => {
     const showInfo = await axios.get(
       `https://api.themoviedb.org/3/tv/${showId}?api_key=88859848d50c55f203e248f5a006929e&language=en-US`
     )
-    // console.log(showInfo)
+    console.log(showInfo)
     setShow(showInfo.data)
   }
 
@@ -47,8 +47,10 @@ const ShowDetail = (props) => {
             </Overdrive>
             <div>
               <h1>{show.name}</h1>
-              <p>First Aired:</p>
-              <h3>{moment(show.first_air_date).format('MMM Do YY')}</h3>
+              <h3>
+                ({moment(show.first_air_date).format('MMMM Do, YYYY')} -{' '}
+                {moment(show.last_air_date).format('MMMM Do, YYYY')})
+              </h3>
               <p>{show.overview}</p>
             </div>
           </ShowInfo>
@@ -93,18 +95,36 @@ const ShowInfo = styled.section`
   div {
     margin-left: 1.2rem;
     line-height: 1.5rem;
+
     > h1 {
       font-size: 2.2rem;
       margin-top: 0;
       font-style: italic;
+      -webkit-text-fill-color: rgb(
+        255,
+        250,
+        205
+      ); /* Will override color (regardless of order) */
+      -webkit-text-stroke-width: 1.5px;
+      -webkit-text-stroke-color: #000;
     }
+
     > p {
       font-size: 1.2rem;
     }
+
     > h3 {
       font-size: 1.5rem;
+      -webkit-text-fill-color: rgb(
+        255,
+        255,
+        255
+      ); /* Will override color (regardless of order) */
+      -webkit-text-stroke-width: 0.5px;
+      -webkit-text-stroke-color: #000;
     }
   }
+
   img {
     position: relative;
     top: -5rem;

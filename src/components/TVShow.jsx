@@ -25,14 +25,14 @@ TVShow.propTypes = {
 
 export const TVPoster = styled.img`
   box-shadow: 0 0 2rem #000;
-  /* rgb(255, 250, 205) */
-  /* border: 0.2rem solid gold; */
   transition: 0.3s ease;
   border-radius: 0.2rem;
+
   :hover {
     animation: 1.5s infinite hover;
     box-shadow: 0 0 1.3rem rgb(255, 250, 205);
   }
+
   @keyframes hover {
     0%,
     100% {

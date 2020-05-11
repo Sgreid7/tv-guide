@@ -4,19 +4,27 @@ import styled from 'styled-components'
 
 const Actor = ({ id, name, character }) => {
   return (
-    <li>
-      <Link to={`/actor/${id}`}>
-        <Header>Name</Header>
-        <p>{name}</p>
-      </Link>
-      <Header>Character</Header>
-      <p>{character}</p>
-    </li>
+    <Wrapper>
+      <li>
+        <Link to={`/actor/${id}`}>
+          <h3>Name</h3>
+          <p>{name}</p>
+        </Link>
+        <h3>Character</h3>
+        <p>{character}</p>
+      </li>
+    </Wrapper>
   )
 }
 
 export default Actor
 
-const Header = styled.h3`
-  text-decoration: underline;
+const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    text-decoration: underline;
+  }
 `
