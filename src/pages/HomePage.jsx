@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import TVShow from '../components/TVShow'
 
@@ -42,11 +44,18 @@ const HomePage = (props) => {
           <Main>
             <Header>
               <h1>Top Rated TV Shows</h1>
-              <input
-                type="search"
-                placeholder="Search for a show..."
-                onChange={updateSearchFilter}
-              />
+              <div className="search-box">
+                <input
+                  type="search"
+                  name="search"
+                  placeholder="Search shows..."
+                  onChange={updateSearchFilter}
+                  autoComplete="off"
+                />
+                <a className="search-btn" href="#">
+                  <FontAwesomeIcon icon={faSearch} />
+                </a>
+              </div>
             </Header>
             <RandomShow>
               <h2>Featured Show of the Day</h2>
@@ -86,11 +95,18 @@ const RandomShow = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background: rgb(255, 250, 205); */
+  margin: 7rem 7rem 2rem 7rem;
+  padding: 2rem 0;
+  box-shadow: 0 0 1.3rem rgb(255, 250, 205);
+  border-radius: 0.5rem;
 
   h2 {
     color: whitesmoke;
     text-shadow: 1rem solid red;
+  }
+
+  img {
+    box-shadow: 0 0 1.3rem rgb(255, 250, 205);
   }
 `
 const TVShowGrid = styled.section`
@@ -109,19 +125,52 @@ const Header = styled.header`
     padding: 1rem 0 0 0;
   }
 
-  input[type='search'] {
-    width: 30%;
-    height: 2rem;
-    border-radius: 1rem;
-    box-shadow: 0 0 2rem 0 rgb(255, 250, 205);
-    border: 0.04rem solid #000;
-    :focus {
-      outline: none;
+  .search-box {
+    position: absolute;
+    background: rgb(255, 250, 205);
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    padding: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0.1rem 0.1rem #000;
+
+    :hover > input {
+      width: 15rem;
+      padding: 0 0.35rem;
     }
-    ::placeholder {
+
+    :hover > .search-btn {
+      background: #fff;
       color: #000;
-      padding-left: 0.2rem;
-      font-style: italic;
+      border: 0.05rem solid #000;
     }
+  }
+
+  .search-btn {
+    color: #fff;
+    float: right;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease;
+  }
+
+  input {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: #fff;
+    transition: 0.4s ease;
+    width: 0rem;
   }
 `
