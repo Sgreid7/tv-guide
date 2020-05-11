@@ -6,8 +6,8 @@ const Actor = ({ id, name, character }) => {
   return (
     <Wrapper>
       <li>
+        <h3>Name</h3>
         <Link to={`/actor/${id}`}>
-          <h3>Name</h3>
           <p>{name}</p>
         </Link>
         <h3>Character</h3>
